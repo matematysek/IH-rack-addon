@@ -1,0 +1,639 @@
+// define the newgrf
+grf {
+    grfid:                  "MG\30\01";
+    name:                   string(STR_GRF_NAME);
+    desc:                   string(STR_GRF_DESCRIPTION);
+    version:                0;
+    min_compatible_version: 0;
+}
+railtypetable {"IHD_", "IHZ_", "IHY_"}
+template template_gui(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //BUTTONS
+    //rail
+    [x    , y   , 20, 20,   0,   0]
+    [x+ 21, y   , 20, 20,   0,   0]
+    [x+ 42, y   , 20, 20,   0,   0]
+    [x+ 63, y   , 20, 20,   0,   0]
+    //autorail    
+    [x    , y+70, 20, 20,   0,   0]
+    //depot       
+    [x+224, y+70, 20, 20,   0,   0]
+    //tunnel      
+    [x+480, y   , 20, 20,   0,   0]
+    //convert rail
+    [x+144, y+70, 20, 20,   0,   0]
+    //CURSORS     
+    //rail        
+    [x+160, y   , 38, 40, -4 ,  -9]
+    [x+208, y   , 72, 44, -17,  -9]
+    [x+288, y   , 44, 34, -14,  -3]
+    [x+352, y   , 40, 41, -15, -10]
+    //autorail    
+    [x+ 80, y+70, 56, 36,   0,   0]
+    //depot       
+    [x+256, y+70, 32, 32,   0,   0]
+    //tunnel      
+    [x+560, y   , 32, 32,   0,   0]
+    //convert rail
+    [x+176, y+70, 32,  32,  0,   0]
+}
+template template_gui_ttd(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //BUTTONS
+    //rail
+    [x    , y   , 20, 16,   0,   2]
+    [x+ 26, y   , 20, 16,   0,   2]
+    [x+ 58, y   , 20, 16,   0,   2]
+    [x+ 90, y   , 20, 16,   0,   2]
+    //autorail
+    [x    , y+70, 20, 20,   0,   0]
+    //depot
+    [x+224, y+70, 20, 20,   0,   0]
+    //tunnel
+    [x+480, y   , 20, 19,   0,   1]
+    //convert rail
+    [x+144, y+70, 20, 20,   0,   0]
+    //CURSORS
+    //rail
+    [x+160, y   , 38, 30,  -3, -14]
+    [x+208, y   , 72, 44, -16,  -8]
+    [x+288, y   , 44, 34, -21,  -2]
+    [x+352, y   , 72, 44, -16, -35]
+    //autorail
+    [x+ 80, y+70, 56, 36,   0,   0]
+    //depot
+    [x+256, y+70, 32, 32,   0,   0]
+    //tunnel
+    [x+560, y   , 32, 32,   0,   0]
+    //convert rail
+    [x+176, y+70, 32, 32,   0,   0]
+}
+
+template template_track_overlay(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //flat
+    [x    , y    , 42, 25, -21,  1]
+    [x+ 80, y    , 42, 25, -19,  1]
+    [x+160, y    , 40, 12, -19,  0]
+    [x+240, y    , 40,  7, -19, 20]
+    [x+320, y    , 15, 19,  11,  6]
+    [x+400, y    , 15, 19, -24,  6]
+    //slope y
+    [x    , y+150, 64, 39, -31, -8]
+    [x+ 80, y+150, 64, 23, -31,  0]
+    [x+160, y+150, 64, 23, -31,  0]
+    [x+240, y+150, 64, 39, -31, -8]
+}
+
+template template_underlay(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //6 flat
+   [x    , y    , 64, 31, -31,  0]
+   [x+ 80, y    , 64, 31, -31,  0]
+   [x+160, y    , 64, 31, -31,  0]
+   [x+240, y    , 64, 31, -31,  0]
+   [x+320, y    , 64, 31, -31,  0]
+   [x+400, y    , 64, 31, -31,  0]
+    //4 slope
+   [x    , y+170, 64, 39, -31, -8]
+   [x+ 80, y+170, 64, 23, -31,  0]
+   [x+160, y+170, 64, 23, -31,  0]
+   [x+240, y+170, 64, 39, -31, -8]
+    //1 X crossing piece
+   [x+480, y    , 64, 31, -31,  0]
+    //5 junction pieces
+   [x    , y+ 50, 64, 31, -31,  0]
+   [x+ 80, y+ 50, 64, 31, -31,  0]
+   [x+160, y+ 50, 64, 31, -31,  0]
+   [x+240, y+ 50, 64, 31, -31,  0]
+   [x+320, y+ 50, 64, 31, -31,  0]
+}
+
+template template_tunnels(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //front SW
+    [x    , y   , 64, 39, -31, -8]
+    //back NW
+    [x+160, y   , 64, 23, -31,  0]
+    //back NE
+    [x    , y+70, 64, 23, -31,  0]
+    //front SE
+    [x+160, y+70, 64, 39, -31, -8]
+}
+
+template template_bridge_surfaces(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //flat
+    [x    , y, 64, 31, -31,  0]
+    [x+ 80, y, 64, 31, -31,  0]
+    //slopes
+    [x+160, y, 64, 39, -31, -8]
+    [x+240, y, 64, 23, -31,  0]
+    [x+320, y, 64, 23, -31,  0]
+    [x+400, y, 64, 39, -31, -8]
+}
+
+template template_bridge_level_crossings_track(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //rail overlay (X, Y)
+    [x   , y, 64, 31, -31, 0]
+    [x+80, y, 64, 31, -31, 0]
+}
+
+template template_bridge_level_crossings_light(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //lights (north, east, west, south; X, Y)
+    [x   , y    , 64, 31, -31,   0]
+    [x+80, y    , 64, 31, -31,   0]
+    [x   , y+ 50, 64, 31, -57, -13]
+    [x+80, y+ 50, 64, 31, -57, -13]
+    [x   , y+100, 64, 31,  -5, -13]
+    [x+80, y+100, 64, 31,  -5, -13]
+    [x   , y+150, 64, 31, -31, -26]
+    [x+80, y+150, 64, 31, -31, -26]
+}
+
+template template_catenary_wire(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x     , y, 64, 37, -45,  -5] //flat
+    [x+  80, y, 64, 37, -17,  -5] //flat
+    [x+ 240, y, 64, 32, -17, -13] //flat
+    [x+ 160, y, 64, 31, -31,  -6] //flat
+    [x+ 560, y, 64, 44, -45,  -6] //slope ne
+    [x+ 400, y, 64, 30, -17,   4] //slope se
+    [x+ 320, y, 64, 30, -45,   4] //slope sw
+    [x+ 480, y, 64, 44, -17,  -6] //slope nw
+    [x     , y, 64, 37, -45,  -5] //flat
+    [x+  80, y, 64, 37, -17,  -5] //flat
+    [x+ 240, y, 64, 32, -17, -13] //flat
+    [x+ 160, y, 64, 31, -31,  -6] //flat
+    [x+ 560, y, 64, 44, -45,  -6] //slope ne
+    [x+ 400, y, 64, 30, -17,   4] //slope se
+    [x+ 320, y, 64, 30, -45,   4] //slope sw
+    [x+ 480, y, 64, 44, -17,  -6] //slope nw
+    [x     , y, 64, 37, -45,  -5] //flat
+    [x+  80, y, 64, 37, -17,  -5] //flat
+    [x+ 240, y, 64, 32, -17, -13] //flat
+    [x+ 160, y, 64, 31, -31,  -6] //flat
+    [x+ 560, y, 64, 44, -45,  -6] //slope ne
+    [x+ 400, y, 64, 30, -17,   4] //slope se
+    [x+ 320, y, 64, 30, -45,   4] //slope sw
+    [x+ 480, y, 64, 44, -17,  -6] //slope nw
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+}
+
+template template_catenary_pylons(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+}
+
+template template_tunnel_overlay(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //front SW
+    [x     , y, 64, 37, -31, -38] //flat
+    //back NW
+    [x+  80, y, 64, 37, -31, -38] //flat
+    //back NE
+    [x+ 160, y, 64, 37, -31, -38] //flat
+    //front SE
+    [x+ 240, y, 64, 37, -31, -38] //flat
+}
+
+template template_depots(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y, 18, 18,  13,  -1]
+    [x+ 80, y, 58, 51,  -5, -37]
+    [x+160, y, 18, 18, -29,  -1]
+    [x+240, y, 58, 51, -51, -37]
+    [x+320, y, 58, 51, -51, -37]
+    [x+400, y, 58, 51,  -5, -37]
+}
+
+template template_signals(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y, 20, 30, -10, -30] //sw
+    [x+ 30, y, 20, 30, -10, -30] //ne
+    [x+ 60, y, 20, 30, -10, -30] //nw
+    [x+ 90, y, 20, 30, -10, -30] //se
+    [x+120, y, 20, 30, -10, -30] //e
+    [x+150, y, 20, 30, -10, -30] //w
+    [x+180, y, 20, 30, -10, -28] //s
+    [x+210, y, 20, 30, -10, -28] //n
+}
+
+
+  spriteset (spriteset_narrowgaugerack2_gui_opengfx, "gfx/NGRRT.png") {
+    template_gui(10,760)
+}
+
+spriteset (spriteset_narrowgaugerack2_track_overlay_opengfx, "gfx/NGRRT.png") {
+    template_track_overlay(10,20)
+}
+
+spriteset (spriteset_narrowgaugerack2_underlay_opengfx, "gfx/NGRRT.png") {
+    template_underlay(10,60)
+}
+
+spriteset (spriteset_narrowgaugerack2_tunnels_opengfx, "gfx/NGRRT.png") {
+    template_tunnels(330,460)
+}
+
+spriteset (spriteset_narrowgaugerack2_bridge_surfaces_opengfx, "gfx/NGRRT.png") {
+    template_bridge_surfaces(10,300)
+}
+
+spriteset (spriteset_narrowgaugerack2_level_crossings_opengfx_open, "gfx/NGRRT.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(10,430)
+}
+spriteset (spriteset_narrowgaugerack2_level_crossings_opengfx_closed, "gfx/NGRRT.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(170,430)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgaugerack2_level_crossings_opengfx, level_crossing_status) {
+    LEVEL_CROSSING_CLOSED: spriteset_narrowgaugerack2_level_crossings_opengfx_closed;
+    spriteset_narrowgaugerack2_level_crossings_opengfx_open;
+}
+
+spriteset (spriteset_narrowgaugerack2_depot, "gfx/NGRRT.png") {
+    template_depots(10,890)
+}
+
+item (FEAT_RAILTYPES, item_narrowgaugerack2) {
+		property {
+			label:                          "IHY_";
+			name:                           string(str_narrowgaugerack2_name);
+			menu_text:                      string(str_narrowgaugerack2_menu_text);
+			build_window_caption:           string(str_narrowgaugerack2_build_window_caption);
+			autoreplace_text:               string(str_narrowgaugerack2_autoreplace_text);
+			new_engine_text:                string(str_narrowgaugerack2_new_engine_text);     
+			curve_speed_multiplier:         1;
+			station_graphics:               RAILTYPE_STATION_NORMAL;
+			speed_limit:                    15 km/h;
+			acceleration_model:             ACC_MODEL_RAIL;
+			//set compatible and powered
+			compatible_railtype_list:       ["IHZ_", "IHD_"];
+            powered_railtype_list:          [];
+		}
+
+		//OpenTTD 1.1 19307
+		property {
+			construction_cost:          14;
+			map_colour:                 0x25;
+		}
+
+		//OpenTTD 1.1 21866
+		/*
+		property {
+			//introduction_date:
+			//requires_railtype_list:
+			//sort_order:
+			//introduces_railtype_list:
+		}
+		*/
+
+		//OpenTTD 1.2 23758
+		property {
+			toolbar_caption:            string(str_narrowgaugerack2_toolbar_caption);
+			maintenance_cost:           11;
+			alternative_railtype_list:  [];
+		}
+
+		/*
+		*  GRAPHICS
+		*/
+
+		graphics {
+			gui:                        spriteset_narrowgaugerack_gui_opengfx;
+			track_overlay:              spriteset_narrowgaugerack_track_overlay_opengfx;
+			underlay:                   spriteset_narrowgaugerack_underlay_opengfx;
+			tunnels:                    spriteset_narrowgaugerack_tunnels_opengfx;
+			//catenary_wire:
+			//catenary_pylons
+			bridge_surfaces:            spriteset_narrowgaugerack_bridge_surfaces_opengfx;
+			level_crossings:            switch_narrowgaugerack2_level_crossings_opengfx;
+			depots:						spriteset_narrowgaugerack_depot;
+			//fences:
+			//tunnel_overlay:
+			//signals:
+		}
+	}
+
+  spriteset (spriteset_narrowgaugerack_gui_opengfx, "gfx/NGRRT.png") {
+    template_gui(10,760)
+}
+
+spriteset (spriteset_narrowgaugerack_track_overlay_opengfx, "gfx/NGRRT.png") {
+    template_track_overlay(10,20)
+}
+
+spriteset (spriteset_narrowgaugerack_underlay_opengfx, "gfx/NGRRT.png") {
+    template_underlay(10,60)
+}
+
+spriteset (spriteset_narrowgaugerack_tunnels_opengfx, "gfx/NGRRT.png") {
+    template_tunnels(330,460)
+}
+
+spriteset (spriteset_narrowgaugerack_bridge_surfaces_opengfx, "gfx/NGRRT.png") {
+    template_bridge_surfaces(10,300)
+}
+
+spriteset (spriteset_narrowgaugerack_level_crossings_opengfx_open, "gfx/NGRRT.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(10,430)
+}
+spriteset (spriteset_narrowgaugerack_level_crossings_opengfx_closed, "gfx/NGRRT.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(170,430)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgaugerack_level_crossings_opengfx, level_crossing_status) {
+    LEVEL_CROSSING_CLOSED: spriteset_narrowgaugerack_level_crossings_opengfx_closed;
+    spriteset_narrowgaugerack_level_crossings_opengfx_open;
+}
+
+spriteset (spriteset_narrowgaugerack_depot, "gfx/NGRRT.png") {
+    template_depots(10,890)
+}
+
+item (FEAT_RAILTYPES, item_narrowgaugerack) {
+		property {
+			label:                          "IHZ_";
+			name:                           string(str_narrowgaugerack_name);
+			menu_text:                      string(str_narrowgaugerack_menu_text);
+			build_window_caption:           string(str_narrowgaugerack_build_window_caption);
+			autoreplace_text:               string(str_narrowgaugerack_autoreplace_text);
+			new_engine_text:                string(str_narrowgaugerack_new_engine_text);     
+			curve_speed_multiplier:         1;
+			station_graphics:               RAILTYPE_STATION_NORMAL;
+			speed_limit:                    40 km/h;
+			acceleration_model:             ACC_MODEL_RAIL;
+			//set compatible and powered
+			compatible_railtype_list:       ["IHZ_", "IHD_"];
+            powered_railtype_list:          ["IHZ_", "IHY_"];
+		}
+
+		//OpenTTD 1.1 19307
+		property {
+			construction_cost:          14;
+			map_colour:                 0x25;
+		}
+
+		//OpenTTD 1.1 21866
+		/*
+		property {
+			//introduction_date:
+			//requires_railtype_list:
+			//sort_order:
+			//introduces_railtype_list:
+		}
+		*/
+
+		//OpenTTD 1.2 23758
+		property {
+			toolbar_caption:            string(str_narrowgaugerack_toolbar_caption);
+			maintenance_cost:           11;
+			alternative_railtype_list:  [];
+		}
+
+		/*
+		*  GRAPHICS
+		*/
+
+		graphics {
+			gui:                        spriteset_narrowgaugerack_gui_opengfx;
+			track_overlay:              spriteset_narrowgaugerack_track_overlay_opengfx;
+			underlay:                   spriteset_narrowgaugerack_underlay_opengfx;
+			tunnels:                    spriteset_narrowgaugerack_tunnels_opengfx;
+			//catenary_wire:
+			//catenary_pylons
+			bridge_surfaces:            spriteset_narrowgaugerack_bridge_surfaces_opengfx;
+			level_crossings:            switch_narrowgaugerack_level_crossings_opengfx;
+			depots:						spriteset_narrowgaugerack_depot;
+			//fences:
+			//tunnel_overlay:
+			//signals:
+		}
+	}
+
+/*
+Use graphics from narrowgauge.pnml. Make sure that is defined before this.
+*/
+
+
+  spriteset (spriteset_narrowgauge_gui_opengfx, "gfx/NGT.png") {
+    template_gui(10,760)
+}
+
+spriteset (spriteset_narrowgauge_track_overlay_opengfx, "gfx/NGT.png") {
+    template_track_overlay(10,20)
+}
+
+spriteset (spriteset_narrowgauge_underlay_opengfx, "gfx/NGT.png") {
+    template_underlay(10,60)
+}
+
+spriteset (spriteset_narrowgauge_tunnels_opengfx, "gfx/NGT.png") {
+    template_tunnels(330,460)
+}
+
+spriteset (spriteset_narrowgauge_bridge_surfaces_opengfx, "gfx/NGT.png") {
+    template_bridge_surfaces(10,300)
+}
+
+spriteset (spriteset_narrowgauge_level_crossings_opengfx_open, "gfx/NGT.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(10,430)
+}
+spriteset (spriteset_narrowgauge_level_crossings_opengfx_closed, "gfx/NGT.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(170,430)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_level_crossings_opengfx, level_crossing_status) {
+    LEVEL_CROSSING_CLOSED: spriteset_narrowgauge_level_crossings_opengfx_closed;
+    spriteset_narrowgauge_level_crossings_opengfx_open;
+}
+
+spriteset (spriteset_narrowgauge_depot, "gfx/NGT.png") {
+    template_depots(10,890)
+}
+
+	item (FEAT_RAILTYPES, item_narrowgauge) {
+		property {
+			label:                          "IHD_";
+			name:                           string(str_narrowgauge_name);
+			menu_text:                      string(str_narrowgauge_menu_text);
+			build_window_caption:           string(str_narrowgauge_build_window_caption);
+			autoreplace_text:               string(str_narrowgauge_autoreplace_text);
+			new_engine_text:                string(str_narrowgauge_new_engine_text);
+			curve_speed_multiplier:         1;
+			station_graphics:               RAILTYPE_STATION_NORMAL;
+			speed_limit:                    0;
+			acceleration_model:             ACC_MODEL_RAIL;
+			//set compatible and powered
+			compatible_railtype_list:       ["IHZ_", "IHD_"];
+			powered_railtype_list:          ["IHD_", "IHY_"];    
+
+		}
+
+		//OpenTTD 1.1 19307
+		property {
+			construction_cost:          11;
+			map_colour:                 0x25;
+		}
+
+		//OpenTTD 1.1 21866
+		/*
+		property {
+			//introduction_date:
+			//requires_railtype_list:
+			//sort_order:
+			//introduces_railtype_list:
+		}
+		*/
+
+		//OpenTTD 1.2 23758
+		property {
+			toolbar_caption:            string(str_narrowgauge_toolbar_caption);
+			maintenance_cost:           11;
+			alternative_railtype_list:  [];
+		}
+
+		/*
+		*  GRAPHICS
+		*/
+
+		graphics {
+			gui:                        spriteset_narrowgauge_gui_opengfx;
+			track_overlay:              spriteset_narrowgauge_track_overlay_opengfx;
+			underlay:                   spriteset_narrowgauge_underlay_opengfx;
+			tunnels:                    spriteset_narrowgauge_tunnels_opengfx;
+			//catenary_wire:
+			//catenary_pylons
+			bridge_surfaces:            spriteset_narrowgauge_bridge_surfaces_opengfx;
+			level_crossings:            switch_narrowgauge_level_crossings_opengfx;
+			depots:						spriteset_narrowgaugerack_depot;
+			//fences:
+			//tunnel_overlay:
+			//signals:
+		}
+	}
+
+    
+    //locosandwagons
+
+//graphics definition
+spriteset(spriteset_empty, "gfx/none.png") {
+    //left_x, upper_y, width, height, offset_x, offset_y
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+}
+
+
+item(FEAT_TRAINS, item_none) {
+    property {
+        name:                         string(STR_NAME_1);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND); 
+        introduction_date:            date(1868, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 255;
+        reliability_decay:            0;
+        refittable_cargo_classes:     bitmask();
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                1; 
+        cost_factor:                  20;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        120 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   IHZ_;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        1000 kW;
+        running_cost_base:            RUNNING_COST_DIESEL;
+        dual_headed:                  0;
+        weight:                       30 ton;
+        ai_engine_rank:               0; // not intended to be used by the ai
+        engine_class:                 ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:        0 kW;
+        tractive_effort_coefficient:  1.0 / 3;
+        air_drag_coefficient:         0.26;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 2, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0 ton;
+        bitmask_vehicle_info:         0;
+        length:                       1;
+    }
+
+    graphics {
+        default: spriteset_empty;
+    }
+}
+//graphics definition
+spriteset(spriteset_empty2, "gfx/none.png") {
+    //left_x, upper_y, width, height, offset_x, offset_y
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+    [ 0,      0,        1,    1,        0,        0]
+}
+
+
+item(FEAT_TRAINS, item_none2) {
+    property {
+        name:                         string(STR_NAME_2);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND); 
+        introduction_date:            date(1868, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 1;
+        reliability_decay:            0;
+        refittable_cargo_classes:     bitmask();
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                1; 
+        cost_factor:                  20;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        1 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   IHY_;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        1 kW;
+        running_cost_base:            RUNNING_COST_DIESEL;
+        dual_headed:                  0;
+        weight:                       1 ton;
+        ai_engine_rank:               0; // not intended to be used by the ai
+        engine_class:                 ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:        0 kW;
+        tractive_effort_coefficient:  1.0 / 3;
+        air_drag_coefficient:         0.26;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 2, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0 ton;
+        bitmask_vehicle_info:         0;
+        length:                       1;
+    }
+
+    graphics {
+        default: spriteset_empty;
+    }
+}
