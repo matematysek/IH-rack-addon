@@ -1,0 +1,28 @@
+﻿##grflangid 0x01
+
+#Main grf title and description
+STR_GRF_NAME			:Iron Horse Rack railway addon
+STR_GRF_DESCRIPTION		:{SILVER}Iron Horse Rack railway addon{}{}{BLACK}Narrow gauge rack railways for Iron Horse. {}{COPYRIGHT}2024 gebik/matematysek{}License: GPLv2
+
+#narrowgauge rack railway track strings
+str_narrowgauge_name                            :Narrow Gauge Railway Track
+str_narrowgauge_toolbar_caption                 :Narrow Gauge Railway Track Construction
+str_narrowgauge_menu_text                       :Narrow Gauge Railway track construction
+str_narrowgauge_build_window_caption            :New Narrow Gauge Railway Vehicles
+str_narrowgauge_autoreplace_text                :Narrow Gauge Railway Vehicles
+str_narrowgauge_new_engine_text                 :narrow gauge railway
+str_narrowgaugerack_name                            :Narrow Gauge Rack Railway Track
+str_narrowgaugerack_toolbar_caption                 :Narrow Gauge Rack Railway Track Construction
+str_narrowgaugerack_menu_text                       :Narrow Gauge Rack Railway track construction
+str_narrowgaugerack_build_window_caption            :New Narrow Gauge Rack Railway Vehicles
+str_narrowgaugerack_autoreplace_text                :Narrow Gauge Rack Railway Vehicles
+str_narrowgaugerack_new_engine_text                 :narrow gauge rack railway
+str_narrowgaugerack2_name                            :Narrow Gauge Rack Railway Transition Track
+str_narrowgaugerack2_toolbar_caption                 :Narrow Gauge Rack Railway Transition Track Construction
+str_narrowgaugerack2_menu_text                       :Narrow Gauge Rack Railway Transition track construction
+str_narrowgaugerack2_build_window_caption            :DO NOT BUY HERE
+str_narrowgaugerack2_autoreplace_text                :DO NOT USE
+str_narrowgaugerack2_new_engine_text                 :
+
+STR_NAME_1            :Invisible leading engine for unelectrified rack railway
+STR_NAME_2            :Useless vehicle making important railtype appear
